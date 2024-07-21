@@ -1,7 +1,6 @@
-package org.ashutosh.factory_pattern.good_design;
+package org.ashutosh.abstract_factory_pattern;
 
 public interface Employee {
     int getSalary();
-
     String getName();
 }
