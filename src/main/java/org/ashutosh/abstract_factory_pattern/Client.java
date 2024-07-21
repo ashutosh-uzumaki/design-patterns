@@ -1,14 +1,12 @@
 package org.ashutosh.abstract_factory_pattern;
 
-import org.ashutosh.factory_pattern.good_design.EmployeeFactory;
-
 public class Client {
     public static void main(String[] args) {
-        Employee devops = (Employee) EmployeeFactory.getEmployee(new DevopsFactory().toString());
+        Employee devops = EmployeeFactory.getEmployee(new DevopsFactory());
         devops.getName();
         devops.getSalary();
 
-        Employee webdev = (Employee) EmployeeFactory.getEmployee(new WebDevFactory().toString());
+        Employee webdev = EmployeeFactory.getEmployee(new WebDevFactory());
         webdev.getSalary();
         webdev.getName();
     }

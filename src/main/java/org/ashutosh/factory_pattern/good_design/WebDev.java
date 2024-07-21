@@ -6,10 +6,4 @@ public class WebDev implements Employee{
         System.out.println("Salary of a web dev!");
         return 500000;
     }
-
-    @Override
-    public String getName(){
-        System.out.println("Web Developer");
-        return "Web Dev";
-    }
 }
