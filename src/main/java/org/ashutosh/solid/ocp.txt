@@ -1,0 +1,36 @@
+Open Closed Principle
+
+A class should be open for extension but closed for modification
+Updating new structures/features without changing the basic structures.
+
+BAD CODE:-
+
+class SaveFile{
+    public String saveToDB(){
+        return "saving to db";
+    }
+}
+
+Now if the client wants to save it to local or wants to save it cloud we will keep changing the SaveFile class.
+
+REFACTORED CODE:-
+
+interface SaveFile{
+    String saveToDB();
+}
+
+class DBSave implements SaveFile{
+    @Override
+    public String saveToDB(){
+        return "saving to db";  
+    }
+}
+
+class LocalSave implements SaveFile{
+    @Override
+    public String saveToLocal(){
+        return "saving to local";
+    }
+}
+
+Now if the client wants to save it to cloud, we can just implement the SaveFile interface without affecting other saving options.

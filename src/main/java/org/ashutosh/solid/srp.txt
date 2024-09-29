@@ -1,0 +1,37 @@
+Single Responsibility Principle.
+
+A class should have only one reason to change.
+That is a class should have one Responsibility.
+
+BAD CODE:-
+class File{
+    public String readFromFile(){
+        return "reading file";
+    }
+    
+    public String writeToFile(){
+        return "writing file";
+    }
+    public void saveToDB(){
+        return "saving to db";
+    }
+}
+
+In the above example the File class should be responsible only to perform operations on file saving to db is not.
+
+REFACTORED CODE:-
+class File{
+    public String readFromFile(){
+        return "reading file";
+    }
+    
+    public String writeToFile(){
+        return "writing file";
+    }
+}
+
+class SaveFile{
+    public String saveToDB(){
+        return "saving to db";
+    }
+}

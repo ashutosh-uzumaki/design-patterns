@@ -1,0 +1,45 @@
+Interface Seggregation Principle.
+
+Interface Seggregation Principle suggests that, client should not be forced to use the Interface they do not use.
+
+BAD CODE:-
+
+interface CarWash{
+    void washCar();
+    void changeOil();
+    void changeTires();
+    void refillAcGas();
+}
+
+Now not every customer will go for all the services. Instead we require to allow the customer to choose the services he wish to avail.
+
+
+interface CarWash{
+    void washCar();
+}
+
+interface OilChange{
+    void changeOil();
+}
+
+interface TireChange{
+    void changeTires();
+}
+
+interface RefillAcGas{
+    void refillAcGas();
+}
+
+Now say the customer wants to avail only ac gas change and car wash he can avail only those.
+
+class RefilGasACPlusCarWash implements RefillAcGas, CarWash{
+    @Override
+    void washCar(){
+        System.out.println("Car Washed");
+    }
+    @Override
+    void refillAcGas(){
+        System.out.println("AC Gas Refilled");
+    }
+} 
+

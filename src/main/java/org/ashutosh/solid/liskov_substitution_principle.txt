@@ -1,0 +1,76 @@
+Liskov Substitution Principle
+
+It suggests that subtypes should be able to replace their base type without any need for change in correctness/working of the program
+
+
+BAD CODE:-
+
+abstract class Bird{
+    abstract void fly();
+    abstract void eat();
+}
+
+class Ostrich extends Bird{
+    @Override
+    void fly(){
+        throw new RuntimeException("Ostrich can't fly");
+    }
+
+    @Override
+    void eat(){
+        System.out.println("Ostrich is eating");
+    }
+}
+
+class Eagle extends Bird{
+    @Override
+    void fly(){
+        System.out.println("Eagle is flying");  
+    }
+
+    @Override
+    void eat(){
+        System.out.println("Eagle is eating");      
+    } 
+}
+
+Now when I substitute Ostrich for Bird class it doesn't implements fly method, it has altered the correctness of the program.
+
+
+REFACTORED CODE:-
+
+interface Flyable{
+    void fly();
+}
+
+interface Bird{
+    void eat(); 
+    void sleep();
+}
+
+class Ostrich implements Bird{
+    @Override   
+    void eat(){
+        System.out.println("Ostrich is eating");    
+    }
+    
+    @Override
+    void sleep(){
+        System.out.println("Ostrich is sleeping");
+    }
+}
+
+class Eagle implements Flyable, Bird{
+    @Override
+    void fly(){
+        System.out.println("Eagle is flying");  
+    }
+    @Override
+    void eat(){
+        System.out.println("Eagle is eating");
+    }
+    @Override
+    void sleep(){
+        System.out.println("Eagle is sleeping");        
+    }
+}
